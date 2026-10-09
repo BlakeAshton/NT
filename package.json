@@ -1,0 +1,1 @@
+{"name":"sentinel","private":true,"workspaces":["apps/*","packages/*"],"scripts":{"dev:bot":"npm run dev -w @sentinel/bot","dev:web":"npm run dev -w @sentinel/web","build":"npm run build -w @sentinel/bot && npm run build -w @sentinel/web","db:generate":"npm run generate -w @sentinel/db","db:migrate":"npm run migrate -w @sentinel/db"},"engines":{"node":">=24.17.0"}}

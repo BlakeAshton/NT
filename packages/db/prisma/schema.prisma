@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+model GuildSettings {
+  guildId String @id
+  logChannelId String?
+  welcomeChannelId String?
+  antiRaidEnabled Boolean @default(false)
+  raidJoinLimit Int @default(10)
+  raidWindowSeconds Int @default(30)
+  updatedAt DateTime @updatedAt
+}
+model ModerationCase {
+  id String @id @default(cuid())
+  guildId String
+  targetId String
+  moderatorId String
+  action String
+  reason String
+  createdAt DateTime @default(now())
+  @@index([guildId, createdAt])
+}
+model SecurityEvent {
+  id String @id @default(cuid())
+  guildId String
+  type String
+  details Json
+  createdAt DateTime @default(now())
+  @@index([guildId, createdAt])
+}

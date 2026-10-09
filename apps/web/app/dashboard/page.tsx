@@ -1,0 +1,3 @@
+import { managedGuilds,session } from '../../lib/auth';
+import { redirect } from 'next/navigation';
+export default async function Dashboard(){const s=await session();if(!s)redirect('/api/auth/login');const guilds=await managedGuilds();return <section><span className="eyebrow">CONTROL CENTER</span><h1>Welcome, {s.username}</h1><p>Select a Discord server you manage.</p>{guilds===null?<p>Could not retrieve Discord servers. Please sign in again.</p>:<div className="grid">{guilds.map(g=><a className="panel" href={`/dashboard/${g.id}`} key={g.id}><h2>{g.name}</h2><small>Configure protection →</small></a>)}</div>}<form action="/api/auth/logout" method="post"><button className="secondary">Sign out</button></form></section>}
