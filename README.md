@@ -1,4 +1,4 @@
-# SENTINEL
+# NT
 
 Multi-tenant Discord moderation bot and management dashboard. **Foundation release (v0.1), not a finished MEE6/ProBot replacement.**
 
